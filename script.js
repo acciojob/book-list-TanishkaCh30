@@ -11,7 +11,7 @@ function addRow(){
 	let newCell3 = newRow.insertCell(2);
     let newCell4 = newRow.insertCell(3);
     
-	newCell1.textContent = title.value;
+	newCell1.textContent = Book1;  //title.value
 	newCell2.textContent = author.value;
 	newCell3.textContent = isbn.value;
 	newCell4.innerHTML="<button id='delete'>Delete</button>";
