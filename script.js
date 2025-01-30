@@ -19,7 +19,7 @@ function addRow(){
 
 table.addEventListener("click",function(e){
 	if(e.target.id==='delete'){
-		let row = e.target.parentElement.parentElement;
+		let row = e.target.parentElement;
 		table.deleteRow(row.rowIndex);
 	}
 })
