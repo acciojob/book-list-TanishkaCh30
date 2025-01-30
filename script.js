@@ -15,6 +15,10 @@ function addRow(){
 	newCell2.textContent = author.value;
 	newCell3.textContent = isbn.value;
 	newCell4.innerHTML="<button id='delete'>Delete</button>";
+
+	title.value = '';
+	author.value = '';
+	isbn.value = '';
 }
 
 table.addEventListener("click",function(e){
