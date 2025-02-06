@@ -1,5 +1,5 @@
 let btn = document.querySelector("#submit");
-let table = document.querySelector(".table");
+let table = document.querySelector("#book-list");
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let isbn = document.querySelector("#isbn");
@@ -23,7 +23,7 @@ function addRow(){
 
 table.addEventListener("click",function(e){
 	if(e.target.id==='delete'){
-		let row = e.target.parentElement;
+		let row = e.target.parentElement.parentElement;
 		table.deleteRow(row.rowIndex);
 	}
 })
