@@ -36,6 +36,6 @@ btn.addEventListener("click", function(event) {
 tableBody.addEventListener("click", function(e) {
     if (e.target.classList.contains('delete')) {
         let row = e.target.closest('tr'); // Get the closest row
-        tableBody.deleteRow(row.rowIndex - 1); // Delete the row
+        tableBody.deleteRow(row.rowIndex); // Delete the row
     }
 });
