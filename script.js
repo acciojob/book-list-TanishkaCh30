@@ -1,35 +1,44 @@
-let btn = document.querySelector("#submit");
-let table = document.querySelector("#book-list");
+let addBookBtn = document.querySelector("#submit");
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let isbn = document.querySelector("#isbn");
+let table = document.querySelector("table");
+let tableBody = document.querySelector("tbody");
 
-function addRow(){
-	let newRow = table.insertRow(1);
-	let newCell1 = newRow.insertCell(0);
-	let newCell2 = newRow.insertCell(1);
-	let newCell3 = newRow.insertCell(2);
-    let newCell4 = newRow.insertCell(3);
-    
-	newCell1.textContent = title.value;  
-	newCell2.textContent = author.value;
-	newCell3.textContent = isbn.value;
-	newCell4.innerHTML="<button id='delete'>Delete</button>";
+addBookBtn.addEventListener("click",addBook);
+let count = 0;
+function addBook(e){
+	count++;
+	e.preventDefault();
+	let row = document.createElement("tr");
+	row.id = `row${count}`;
+	let col1 = document.createElement("td");
+	col1.innerText = title.value;
+	let col2 = document.createElement("td");
+	col2.innerText = author.value;
+	let col3 = document.createElement("td");
+	col3.innerText = isbn.value;
+	let col4 = document.createElement("td");
+	let deleteBtn = document.createElement("button");
+	deleteBtn.className = "delete";
+	deleteBtn.id = `delete${count}`;
+	col4.append(deleteBtn);
+	deleteBtn.innerText = "Delete"
+	row.append(col1, col2, col3, col4);
+	tableBody.append(row);
 
-	title.value = '';
-	author.value = '';
-	isbn.value = '';
+	deleteBtn.addEventListener("click",deleteBook);
+	let rows = document.querySelectorAll("#book-list tr");
+
+
+	function deleteBook(e){
+		let id = e.target.id.slice(6);
+		// console.log(id);
+		rows.forEach(row =>{
+			if(row.id.slice(3) == id){
+				row.remove();
+			}
+			
+		})
+	}	
 }
-
-table.addEventListener("click",function(e){
-	if(e.target.id==='delete'){
-		let row = e.target.parentElement.parentElement;
-		table.deleteRow(row.rowIndex);
-	}
-})
-
-btn.addEventListener("click" , addRow);
-
-
-
-
